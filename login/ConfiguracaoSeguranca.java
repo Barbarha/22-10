@@ -1,6 +1,5 @@
 package com.sesi.login.config;
 
-
 import org.springframework.context.annotation.Bean;
 
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -29,7 +28,7 @@ public class ConfiguracaoSeguranca {
 		http
 			.authorizeHttpRequests((authorize)->
 				authorize
-					.requestMatchers("/login", "/registrar").permitAll()
+					.requestMatchers("/login", "/registrar", "/h2-console/**").permitAll()
 					.requestMatchers("css/**").permitAll()
 					.anyRequest().authenticated()
 					)
@@ -47,6 +46,9 @@ public class ConfiguracaoSeguranca {
 					.deleteCookies("JSESSIONID")
 					.permitAll()
 					);
+		
+		http.csrf().disable();
+		http.headers().frameOptions().disable();
 		
 		return http.build();
 	}

@@ -11,7 +11,7 @@
 	<div id="container">
 		<h2>Login</h2>
 		
-		<form th:action="@{registrar}" th:object="@{usuario}" method="post">
+		<form th:action="@{registrar}" th:object="${usuario}" method="post">
 			<div>
 				<label>Nome do usuario</label>	
 				<input type="text" name="username" th:field="*{nomeUsuario}">		
